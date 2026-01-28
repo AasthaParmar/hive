@@ -144,7 +144,7 @@ class TestFileStorageRunOperations:
 
         result = storage.delete_run(run.id)
 
-        assert result is True
+        assert result
         assert storage.load_run(run.id) is None
 
     def test_delete_nonexistent_run_returns_false(self, tmp_path: Path):
@@ -152,7 +152,7 @@ class TestFileStorageRunOperations:
         storage = FileStorage(tmp_path)
 
         result = storage.delete_run("nonexistent")
-        assert result is False
+        assert not result
 
 
 class TestFileStorageIndexing:
@@ -442,7 +442,7 @@ class TestConcurrentStorageRunOperations:
 
             result = await storage.delete_run(run.id)
 
-            assert result is True
+            assert result
             loaded = await storage.load_run(run.id)
             assert loaded is None
         finally:

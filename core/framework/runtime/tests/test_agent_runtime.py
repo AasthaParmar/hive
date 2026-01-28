@@ -296,7 +296,7 @@ class TestEventBus:
 
         result = bus.unsubscribe(sub_id)
 
-        assert result is True
+        assert result
         assert sub_id not in bus._subscriptions
 
     @pytest.mark.asyncio
